@@ -1,0 +1,128 @@
+[
+  {
+    "name": "Carlos López",
+    "birthdate": "12/03/1985",
+    "gender": "Masculino",
+    "email": "carlos.lopez@example.com",
+    "phone": "+1-555-234-5678"
+  },
+  {
+    "name": "Maria Fernández",
+    "birthdate": "24/07/1992",
+    "gender": "Femenino",
+    "email": "maria.fernandez@example.com",
+    "phone": "+1-555-876-5432"
+  },
+  {
+    "name": "Juan Pérez",
+    "birthdate": "08/11/1988",
+    "gender": "Masculino",
+    "email": "juan.perez@example.com",
+    "phone": "+1-555-123-4567"
+  },
+  {
+    "name": "Sofia García",
+    "birthdate": "15/04/1995",
+    "gender": "Femenino",
+    "email": "sofia.garcia@example.com",
+    "phone": "+1-555-456-7890"
+  },
+  {
+    "name": "Miguel Torres",
+    "birthdate": "30/06/1983",
+    "gender": "Masculino",
+    "email": "miguel.torres@example.com",
+    "phone": "+1-555-987-6543"
+  },
+  {
+    "name": "Lucia Sánchez",
+    "birthdate": "21/09/1990",
+    "gender": "Femenino",
+    "email": "lucia.sanchez@example.com",
+    "phone": "+1-555-654-3210"
+  },
+  {
+    "name": "Andres Gómez",
+    "birthdate": "18/02/1981",
+    "gender": "Masculino",
+    "email": "andres.gomez@example.com",
+    "phone": "+1-555-432-1098"
+  },
+  {
+    "name": "Elena Rodríguez",
+    "birthdate": "12/12/1986",
+    "gender": "Femenino",
+    "email": "elena.rodriguez@example.com",
+    "phone": "+1-555-210-9876"
+  },
+  {
+    "name": "Pablo Martínez",
+    "birthdate": "05/05/1993",
+    "gender": "Masculino",
+    "email": "pablo.martinez@example.com",
+    "phone": "+1-555-678-9012"
+  },
+  {
+    "name": "Isabel Ruiz",
+    "birthdate": "28/08/1997",
+    "gender": "Femenino",
+    "email": "isabel.ruiz@example.com",
+    "phone": "+1-555-345-6789"
+  },
+  {
+    "name": "Diego Morales",
+    "birthdate": "02/01/1989",
+    "gender": "Masculino",
+    "email": "diego.morales@example.com",
+    "phone": "+1-555-901-2345"
+  },
+  {
+    "name": "Ana Castillo",
+    "birthdate": "09/10/1994",
+    "gender": "Femenino",
+    "email": "ana.castillo@example.com",
+    "phone": "+1-555-876-4321"
+  },
+  {
+    "name": "Javier Ortiz",
+    "birthdate": "14/03/1980",
+    "gender": "Masculino",
+    "email": "javier.ortiz@example.com",
+    "phone": "+1-555-567-8901"
+  },
+  {
+    "name": "Patricia Delgado",
+    "birthdate": "19/07/1996",
+    "gender": "Femenino",
+    "email": "patricia.delgado@example.com",
+    "phone": "+1-555-234-6789"
+  },
+  {
+    "name": "Luis Rivera",
+    "birthdate": "22/11/1984",
+    "gender": "Masculino",
+    "email": "luis.rivera@example.com",
+    "phone": "+1-555-789-0123"
+  },
+  {
+    "name": "Gabriela Vargas",
+    "birthdate": "01/02/1998",
+    "gender": "Femenino",
+    "email": "gabriela.vargas@example.com",
+    "phone": "+1-555-345-9012"
+  },
+  {
+    "name": "Ricardo Cruz",
+    "birthdate": "06/06/1987",
+    "gender": "Masculino",
+    "email": "ricardo.cruz@example.com",
+    "phone": "+1-555-678-5432"
+  },
+  {
+    "name": "Carmen Herrera",
+    "birthdate": "17/12/1991",
+    "gender": "Femenino",
+    "email": "carmen.herrera@example.com",
+    "phone": "+1-555-123-9876"
+  }
+]
