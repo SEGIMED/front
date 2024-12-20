@@ -1,6 +1,22 @@
 import patients from '@/features/patients/helpers/patientsList.json';
 import Image from 'next/image';
 import Avatar from '@/features/patients/assets/AvarDefault.png';
+import { Button } from '@/components/ui/button';
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableHead,
+  TableRow,
+  TableCell
+} from '@/components/ui/table';
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent
+} from '@/components/ui/accordion';
+
 const Page = () => {
   return (
     <div className="">
@@ -9,47 +25,74 @@ const Page = () => {
         <input
           type="text"
           placeholder="Buscar"
-          className="w-[90%] rounded-[5px] px-4 py-2"
+          className="w-[90%]  rounded-[5px] border-gray-300 px-4 py-2"
         />
         <p>Ordenar</p>
-        <p>Agregar Paciente</p>
+        <Button
+          variant="outline"
+          size="default"
+          className="rounded-lg border-gray-300"
+        >
+          Agregar Paciente
+        </Button>
       </div>
 
       {/* Table Section */}
-      <table className="w-full border-collapse border border-gray-300 px-10 py-2">
-        <thead>
-          <tr className="grid grid-cols-[20%,15%,15%,20%,20%,10%] border-b border-gray-300 bg-gray-100 px-10">
-            <th className="text-left">Nombre</th>
-            <th className="text-left">Fecha de nacimiento</th>
-            <th className="text-left">Genero</th>
-            <th className="text-left">Email</th>
-            <th className="text-left">Teléfono</th>
-          </tr>
-        </thead>
-        <tbody>
+      <Table className="w-full border-collapse border border-gray-300 px-10 py-2">
+        <TableHeader>
+          <TableRow className="grid grid-cols-[20%,15%,15%,20%,20%,10%] items-center border-b border-gray-300 bg-gray-100 px-10">
+            <TableHead className="text-left">Nombre</TableHead>
+            <TableHead className="text-left">Fecha de nacimiento</TableHead>
+            <TableHead className="text-left">Genero</TableHead>
+            <TableHead className="text-left">Email</TableHead>
+            <TableHead className="text-left">Teléfono</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
           {patients.map((patient, index) => (
-            <tr
+            <TableRow
               key={index}
-              className="grid grid-cols-[20%,15%,15%,20%,20%,10%]  items-center border-b border-gray-200 px-10"
+              className="grid grid-cols-[20%,15%,15%,20%,20%,10%] items-center border-b border-gray-200 px-10"
             >
-              <td className="flex items-center gap-[5px]">
+              <TableCell className="flex items-center gap-[5px]">
                 <Image
                   src={Avatar}
                   alt="Patient Avatar"
                   className="h-10 w-10 rounded-[5px]"
                 />
-                {/* <img src={Avatar} alt="Patient Avatar"  /> */}
                 {patient.name}
-              </td>
-              <td>{patient.birthdate}</td>
-              <td>{patient.gender}</td>
-              <td>{patient.email}</td>
-              <td>{patient.phone}</td>
-              <td>...</td>
-            </tr>
+              </TableCell>
+              <TableCell>{patient.birthdate}</TableCell>
+              <TableCell>{patient.gender}</TableCell>
+              <TableCell>{patient.email}</TableCell>
+              <TableCell>{patient.phone}</TableCell>
+              <TableCell>
+                <Accordion type="single" collapsible className="w-48">
+                  <AccordionItem value="actions">
+                    <AccordionTrigger className="text-blue-600">
+                      ...
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      <ul className="m-0 p-0">
+                        <li className="border-b border-gray-200 px-4 py-2">
+                          Iniciar Consulta
+                        </li>
+                        <li className="border-b border-gray-200 px-4 py-2">
+                          Ver Perfil
+                        </li>
+                        <li className="border-b border-gray-200 px-4 py-2">
+                          Editar
+                        </li>
+                        <li className="px-4 py-2 text-red-600">Eliminar</li>
+                      </ul>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </TableCell>
+            </TableRow>
           ))}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
     </div>
   );
 };
