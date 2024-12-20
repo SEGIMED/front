@@ -33,12 +33,12 @@ const Login = () => {
   };
 
   return (
-    <div className="max-w-[440px] space-y-5">
-      <p className="text-center text-[28px] font-bold text-blue-500">
+    <div className="w-[500px] space-y-5 border-2 px-5 py-3 shadow-lg">
+      <p className="text-center text-[28px] font-bold text-bluePrimary">
         Iniciar sesión
       </p>
       <LoginGoogle2 />
-      <p className=" text-textColor relative text-center text-xl font-semibold before:absolute before:-left-[1px] before:top-1/2 before:w-[80px] before:bg-gray-400 before:content-[''] after:-right-[1px] after:top-1/2 after:bg-gray-400 after:content-[''] md:before:h-[1px] md:after:absolute md:after:h-[1px] md:after:w-[80px]">
+      <p className=" text-textColor relative text-center text-xl font-semibold before:absolute before:-left-[1px] before:top-1/2 before:w-[120px] before:bg-gray-400 before:content-[''] after:-right-[1px] after:top-1/2 after:bg-gray-400 after:content-[''] md:before:h-[1px] md:after:absolute md:after:h-[1px] md:after:w-[120px]">
         o ingresa tus datos
       </p>
       <form className="space-y-4" onSubmit={handleSubmit}>
@@ -67,10 +67,10 @@ const Login = () => {
         </div>
         {error && <p className="text-red-800">{error}</p>}
         <button
-          className="w-full rounded-xl bg-sky-400 py-2 font-bold text-white"
+          className="w-full rounded-xl bg-bluePrimary py-2 font-bold text-white"
           type="submit"
         >
-          Login
+          Iniciar sesión
         </button>
       </form>
     </div>
