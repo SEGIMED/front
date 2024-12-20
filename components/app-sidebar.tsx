@@ -16,9 +16,10 @@ import {
 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 const menuItems = [
-  { icon: UserRoundCheck, label: 'Pacientes', href: '/pacientes' },
+  { icon: UserRoundCheck, label: 'Pacientes', href: '/dashboard/patients' },
   { icon: Calendar, label: 'Turnos', href: '/turnos' },
   { icon: ClipboardList, label: 'Consultas', href: '/consultas' },
   { icon: MessageSquareText, label: 'Mensajes', href: '/mensajes' },
@@ -27,12 +28,11 @@ const menuItems = [
   { icon: Star, label: 'Sugerencias', href: '/sugerencias' }
 ];
 
-{
-  /* Nombre de la organización */
-}
 const organizationName = 'Sanatorio Trinidad';
 
 export function AppSidebar() {
+  const pathname = usePathname();
+
   return (
     <div className="flex max-h-screen w-64 flex-col border-r border-gray-400/50 bg-[#fafafc]">
       {/* Logo */}
@@ -41,8 +41,7 @@ export function AppSidebar() {
           <Image
             src="/truchilogo.png"
             alt="Segimed"
-            className="mb-[35px] mt-8 flex
-                h-12 w-40"
+            className="mb-[35px] mt-8 flex h-12 w-40"
             width={500}
             height={500}
           />
@@ -59,7 +58,11 @@ export function AppSidebar() {
           {menuItems.map((item, index) => (
             <li
               key={index}
-              className=" mb-[5px] w-[215px] rounded-md hover:bg-[#e8efff]"
+              className={`mb-[5px] w-[215px] rounded-md ${
+                pathname === item.href
+                  ? 'bg-blue-500 text-white'
+                  : 'text-gray-800 hover:bg-[#e8efff]'
+              }`}
             >
               <Link href={item.href} className="flex items-center">
                 <item.icon className="m-[10px] h-[26px] w-[26px]" />
