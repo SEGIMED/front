@@ -1,4 +1,7 @@
+/* eslint-disable no-console */
+'use client';
 import Image from 'next/image';
+import { Search, UserRoundPlus, ArrowUpDown } from 'lucide-react';
 import Avatar from '@/features/patients/assets/AvarDefault.png';
 import { Button } from '@/components/ui/button';
 import {
@@ -10,11 +13,11 @@ import {
   TableCell
 } from '@/components/ui/table';
 import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent
-} from '@/components/ui/accordion';
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem
+} from '@/components/ui/dropdown-menu';
 import GetPatients from '@/features/patients/actions/GetPatients';
 
 const patients = GetPatients();
@@ -23,18 +26,59 @@ const Page = () => {
     <div className="">
       {/* Header Section */}
       <div className="grid grid-cols-[20%,60%,20%] items-center px-10 py-2">
-        <input
-          type="text"
-          placeholder="Buscar"
-          className="w-[90%]  rounded-[5px] border-gray-300 px-4 py-2"
-        />
-        <p>Ordenar</p>
+        <div className="relative w-[90%]">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 transform text-gray-500" />
+          <input
+            type="text"
+            placeholder="Buscar"
+            className="w-full  rounded-[5px] border-gray-300 bg-transparent py-2 pl-10"
+          />
+        </div>
+        <DropdownMenu>
+          <DropdownMenuTrigger
+            asChild
+            className="flex items-center gap-2  rounded-[5px] border-gray-300"
+          >
+            <Button
+              variant="outline"
+              size="default"
+              className="flex w-[200px] items-center gap-2 rounded-lg border-gray-300"
+            >
+              <ArrowUpDown />
+              Ordenar
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent side="bottom" align="start" className="w-48">
+            <DropdownMenuItem onSelect={() => console.log('Alfabeticamente')}>
+              Alfabeticamente
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              onSelect={() => console.log('Mayor a menor edad')}
+            >
+              Mayor a menor edad
+            </DropdownMenuItem>
+            <DropdownMenuItem onSelect={() => console.log('Alfabeticamente')}>
+              Alfabeticamente
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              onSelect={() => console.log('Menor a mayor edad')}
+            >
+              Menor a mayor edad
+            </DropdownMenuItem>
+            <DropdownMenuItem onSelect={() => console.log('Por genero')}>
+              Por genero
+            </DropdownMenuItem>
+            <DropdownMenuItem onSelect={() => console.log('Mas recientes')}>
+              Mas recientes
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
         <Button
           variant="outline"
           size="default"
-          className="rounded-lg border-gray-300"
+          className="flex items-center gap-2 rounded-lg border-gray-300"
         >
-          Agregar Paciente
+          <UserRoundPlus className=" text-gray-500" /> Agregar Paciente
         </Button>
       </div>
 
@@ -68,27 +112,33 @@ const Page = () => {
               <TableCell>{patient.email}</TableCell>
               <TableCell>{patient.phone}</TableCell>
               <TableCell>
-                <Accordion type="single" collapsible className="w-48">
-                  <AccordionItem value="actions">
-                    <AccordionTrigger className="text-blue-600">
-                      ...
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <ul className="m-0 p-0">
-                        <li className="border-b border-gray-200 px-4 py-2">
-                          Iniciar Consulta
-                        </li>
-                        <li className="border-b border-gray-200 px-4 py-2">
-                          Ver Perfil
-                        </li>
-                        <li className="border-b border-gray-200 px-4 py-2">
-                          Editar
-                        </li>
-                        <li className="px-4 py-2 text-red-600">Eliminar</li>
-                      </ul>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <button className="text-blue-600">...</button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent
+                    side="bottom"
+                    align="start"
+                    className="w-48"
+                  >
+                    <DropdownMenuItem
+                      onSelect={() => console.log('Iniciar Consulta')}
+                    >
+                      Iniciar Consulta
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      onSelect={() => console.log('Ver Perfil')}
+                    >
+                      Ver Perfil
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onSelect={() => console.log('Editar')}>
+                      Editar
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onSelect={() => console.log('Eliminar')}>
+                      Eliminar
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </TableCell>
             </TableRow>
           ))}
