@@ -6,11 +6,14 @@ import { usePathname } from 'next/navigation';
 
 export function AppHeader() {
   const pathname = usePathname();
-
+  const capitalize = (str: string) =>
+    str.charAt(0).toUpperCase() + str.slice(1);
   return (
     <header className="flex h-[89px] w-[calc(100vw-250px)] items-center justify-between border-b border-[#d7d7d7] bg-white px-6">
       <h1 className="text-xl font-normal text-gray-900">
-        {pathname === '/' ? 'Dashboard' : pathname.split('/').pop()}{' '}
+        {pathname === '/'
+          ? 'Dashboard'
+          : capitalize(pathname.split('/').pop() || '')}
       </h1>
       <div className="flex items-center gap-2 space-x-[10px]">
         <Button

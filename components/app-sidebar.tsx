@@ -60,8 +60,8 @@ export function AppSidebar() {
               key={index}
               className={`mb-[5px] w-[215px] rounded-md ${
                 pathname === item.href
-                  ? 'bg-blue-500 text-white'
-                  : 'text-gray-800 hover:bg-[#e8efff]'
+                  ? 'bg-[#e8efff] text-[#487ffa]'
+                  : 'text-[#808080] hover:bg-[#e8efff]'
               }`}
             >
               <Link href={item.href} className="flex items-center">
