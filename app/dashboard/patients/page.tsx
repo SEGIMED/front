@@ -1,4 +1,3 @@
-import patients from '@/features/patients/helpers/patientsList.json';
 import Image from 'next/image';
 import Avatar from '@/features/patients/assets/AvarDefault.png';
 import { Button } from '@/components/ui/button';
@@ -16,7 +15,9 @@ import {
   AccordionTrigger,
   AccordionContent
 } from '@/components/ui/accordion';
+import GetPatients from '@/features/patients/actions/GetPatients';
 
+const patients = GetPatients();
 const Page = () => {
   return (
     <div className="">
