@@ -77,7 +77,7 @@ export function AppSidebar() {
       <div className="m-auto mb-8 w-[215px] space-y-[10px]">
         <Button
           variant="ghost"
-          className="-px-4 -py-2 h-[50px] w-full justify-start border-2 border-blue-400/60 bg-[#e8efff] font-Roboto text-xl text-[#487ffa] hover:bg-blue-100 hover:text-blue-700"
+          className="-px-4 -py-2 h-[50px] w-full justify-start border-[1px] border-[#487ffa] bg-[#e8efff] font-Roboto text-xl font-normal text-[#487ffa] hover:bg-blue-100 hover:text-blue-700"
         >
           <Crown
             fill="#f2ad23"
@@ -87,7 +87,7 @@ export function AppSidebar() {
         </Button>
         <Button
           variant="ghost"
-          className="-px-4 -py-2 h-11 w-full justify-start font-Poppins text-red-600 hover:bg-red-50 hover:text-red-700"
+          className="-px-4 -py-2 h-11 w-full justify-start font-Poppins text-xl font-normal text-[#e95454] hover:bg-red-50 hover:text-red-700"
         >
           <LogOut className="m-[10px] h-6 w-6 rotate-180" />
           <span className="ml-[5px]">Cerrar sesión</span>
