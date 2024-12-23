@@ -1,7 +1,9 @@
+import Login from '@/features/auth/components/Login';
+
 const Page = () => {
   return (
     <div>
-      <h1>Login</h1>
+      <Login />
     </div>
   );
 };
