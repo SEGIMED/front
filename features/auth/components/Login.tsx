@@ -34,7 +34,7 @@ const Login = () => {
 
   return (
     <div className="w-[500px] space-y-5 border-2 px-5 py-3 shadow-lg">
-      <p className="text-bluePrimary text-center text-[28px] font-bold">
+      <p className="text-center text-[28px] font-bold text-bluePrimary">
         Iniciar sesión
       </p>
       <LoginGoogle />
@@ -67,7 +67,7 @@ const Login = () => {
         </div>
         {error && <p className="text-red-800">{error}</p>}
         <button
-          className="w-full py-2 font-bold text-white bg-bluePrimary rounded-xl"
+          className="w-full py-2 font-bold text-white rounded-xl bg-bluePrimary"
           type="submit"
         >
           Iniciar sesión
