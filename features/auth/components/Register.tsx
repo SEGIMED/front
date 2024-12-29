@@ -50,7 +50,7 @@ const Register = () => {
         <div className="flex flex-col">
           <label htmlFor="email">Nombre completo</label>
           <input
-            className="border-red border-2 border-slate-300 bg-transparent p-2 "
+            className="p-2 bg-transparent border-2 border-red border-slate-300 "
             name="email"
             type="text"
             placeholder="Ingrese su nombre completo"
@@ -63,7 +63,7 @@ const Register = () => {
         <div className="flex flex-col">
           <label htmlFor="email">Correo Electronico</label>
           <input
-            className="border-red border-2 border-slate-300 bg-transparent p-2 "
+            className="p-2 bg-transparent border-2 border-red border-slate-300 "
             name="email"
             type="text"
             placeholder="Ingrese su correo electronico"
@@ -76,7 +76,7 @@ const Register = () => {
         <div className="flex flex-col">
           <label htmlFor="password">Contraseña</label>
           <input
-            className="border-red border-2 border-slate-300 bg-transparent p-2 "
+            className="p-2 bg-transparent border-2 border-red border-slate-300 "
             type="password"
             placeholder="Ingrese su contraseña"
             value={password}
@@ -88,7 +88,7 @@ const Register = () => {
         <div className="flex flex-col">
           <label htmlFor="password">Confirmar contraseña</label>
           <input
-            className="border-red border-2 border-slate-300 bg-transparent p-2 "
+            className="p-2 bg-transparent border-2 border-red border-slate-300 "
             type="password"
             placeholder="Confirme su contraseña"
             value={password}
@@ -104,16 +104,22 @@ const Register = () => {
             defaultCountry="AR"
             value={phone}
             onChange={setPhone}
-            className="border-2 border-slate-300 bg-transparent p-2"
+            className="p-2 bg-transparent border-2 border-red border-slate-300 "
             placeholder="Ingresa tu número de teléfono"
-            style={{ width: '100%' }}
+            countrySelectProps={{
+              className:
+                'rounded-md border bg-transparent border-gray-300 px-3 py-1 text-sm'
+            }}
+            inputStyle={{
+              className: 'bg-transparent text-white'
+            }}
           />
         </div>
 
         {error && <p className="text-red-800">{error}</p>}
 
         <button
-          className="flex w-full justify-center rounded-xl bg-bluePrimary py-2 font-bold text-white"
+          className="flex justify-center w-full py-2 font-bold text-white rounded-xl bg-bluePrimary"
           type="submit"
         >
           Crear cuenta

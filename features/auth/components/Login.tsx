@@ -47,7 +47,7 @@ const Login = () => {
         <div className="flex flex-col">
           <label htmlFor="email">Correo Electronico</label>
           <input
-            className="border-red border-2 border-slate-300 bg-transparent p-2 "
+            className="p-2 bg-transparent border-2 border-red border-slate-300 "
             name="email"
             type="text"
             placeholder="Ingrese su correo electronico"
@@ -59,7 +59,7 @@ const Login = () => {
         <div className="flex flex-col">
           <label htmlFor="password">Contraseña</label>
           <input
-            className="border-red border-2 border-slate-300 bg-transparent p-2 "
+            className="p-2 bg-transparent border-2 border-red border-slate-300 "
             type="password"
             placeholder="Ingrese su contraseña"
             value={password}
@@ -68,11 +68,12 @@ const Login = () => {
           />
         </div>
         {error && <p className="text-red-800">{error}</p>}
-
-        <p className="text-end text-bluePrimary">Recuperar Contraseña</p>
+        <Link href={PATHROUTES.FORGOTPASSWORD}>
+          <p className="my-2 text-end text-bluePrimary">Recuperar Contraseña</p>
+        </Link>
 
         <button
-          className="flex w-full justify-center rounded-xl bg-bluePrimary py-2 font-bold text-white"
+          className="flex justify-center w-full py-2 font-bold text-white rounded-xl bg-bluePrimary"
           type="submit"
         >
           Iniciar sesión
