@@ -8,7 +8,8 @@ module.exports = {
     './constants/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-    './sections/**/*.{ts,tsx}'
+    './sections/**/*.{ts,tsx}',
+    './features/**/*.{ts,tsx}'
   ],
   theme: {
     container: {
@@ -20,6 +21,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        bluePrimary: '#487FFA',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',

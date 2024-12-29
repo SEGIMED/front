@@ -1,7 +1,8 @@
+import Register from '@/features/auth/components/Register';
 const Page = () => {
   return (
     <div>
-      <h1>Login</h1>
+      <Register />
     </div>
   );
 };
