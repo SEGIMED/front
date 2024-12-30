@@ -16,7 +16,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
-      <body className={'overflow-hidden font-Poppins'}>
+      <body className={'font-Poppins'}>
         <NextTopLoader showSpinner={false} />
         <Toaster />
         <ThemeProvider>{children}</ThemeProvider>
