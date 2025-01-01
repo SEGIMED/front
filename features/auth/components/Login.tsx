@@ -1,35 +1,42 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { signIn } from 'next-auth/react';
 import LoginGoogle from './GoogleButton';
 import { PATHROUTES } from '@/helpers/pathroutes';
 import Link from 'next/link';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { LoginSchema, type LoginSchemaType } from '../Lib/zod/schema';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset
+  } = useForm<LoginSchemaType>({
+    resolver: zodResolver(LoginSchema),
+    defaultValues: {
+      email: '',
+      password: ''
+    }
+  });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
+  const onSubmit = async (data: LoginSchemaType) => {
     try {
       const res = await signIn('credentials', {
-        email,
-        password,
+        email: data.email,
+        password: data.password,
         redirect: false
       });
 
       if (!res?.ok) {
-        setError('Credenciales inválidas');
       } else {
         alert('Login exitoso');
-        setEmail('');
-        setPassword('');
+        reset();
       }
     } catch (error) {
-      setError('Error al autenticar usuario');
       alert('Error de autenticación');
     }
   };
@@ -40,34 +47,38 @@ const Login = () => {
         Iniciar sesión
       </p>
       <LoginGoogle />
+
       <p className=" text-textColor relative text-center text-xl font-semibold before:absolute before:-left-[1px] before:top-1/2 before:w-[120px] before:bg-gray-400 before:content-[''] after:-right-[1px] after:top-1/2 after:bg-gray-400 after:content-[''] md:before:h-[1px] md:after:absolute md:after:h-[1px] md:after:w-[120px]">
         o ingresa tus datos
       </p>
-      <form className="space-y-4" onSubmit={handleSubmit}>
+
+      <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col">
           <label htmlFor="email">Correo Electronico</label>
           <input
             className="p-2 bg-transparent border-2 border-red border-slate-300 "
-            name="email"
-            type="text"
+            type="email"
             placeholder="Ingrese su correo electronico"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
+            {...register('email')}
           />
+          {errors.email && (
+            <p className="text-xs text-red-500">{errors.email.message}</p>
+          )}
         </div>
+
         <div className="flex flex-col">
           <label htmlFor="password">Contraseña</label>
           <input
             className="p-2 bg-transparent border-2 border-red border-slate-300 "
             type="password"
             placeholder="Ingrese su contraseña"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
+            {...register('password')}
           />
+          {errors.password && (
+            <p className="text-xs text-red-500">{errors.password.message}</p>
+          )}
         </div>
-        {error && <p className="text-red-800">{error}</p>}
+
         <Link href={PATHROUTES.FORGOTPASSWORD}>
           <p className="my-2 text-end text-bluePrimary">Recuperar Contraseña</p>
         </Link>

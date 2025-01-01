@@ -1,35 +1,27 @@
 'use client';
 
-import React, { useState } from 'react';
-import { signIn } from 'next-auth/react';
+import React from 'react';
 import { PATHROUTES } from '@/helpers/pathroutes';
 import Link from 'next/link';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { ForgotSchema, type ForgotSchemaType } from '../Lib/zod/schema';
 
 const ForgotPassword = () => {
-  const [email, setEmail] = useState('');
-
-  const [error, setError] = useState('');
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    try {
-      const res = await signIn('credentials', {
-        email,
-
-        redirect: false
-      });
-
-      if (!res?.ok) {
-        setError('Credenciales inválidas');
-      } else {
-        alert('Login exitoso');
-        setEmail('');
-      }
-    } catch (error) {
-      setError('Error al autenticar usuario');
-      alert('Error de autenticación');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset
+  } = useForm<ForgotSchemaType>({
+    resolver: zodResolver(ForgotSchema),
+    defaultValues: {
+      email: ''
     }
+  });
+
+  const onSubmit = async (data: ForgotSchemaType) => {
+    reset();
   };
 
   return (
@@ -42,21 +34,19 @@ const ForgotPassword = () => {
         las instrucciones para restablecer tu contraseña.
       </p>
 
-      <form className="space-y-4" onSubmit={handleSubmit}>
+      <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col">
           <label htmlFor="email">Correo Electronico</label>
           <input
             className="p-2 bg-transparent border-2 border-red border-slate-300 "
-            name="email"
             type="text"
             placeholder="Ingrese su correo electronico"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
+            {...register('email')}
           />
+          {errors.email && (
+            <p className="text-xs text-red-500">{errors.email.message}</p>
+          )}
         </div>
-
-        {error && <p className="text-red-800">{error}</p>}
 
         <button
           className="flex justify-center w-full py-2 font-bold text-white rounded-xl bg-bluePrimary"
